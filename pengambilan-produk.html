@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Produk Pengadilan | PTSP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans">
+
+    <div class="container mx-auto px-4 py-16">
+        <div class="max-w-lg mx-auto">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+                <div class="bg-yellow-500 p-8 text-white text-center">
+                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-search-location text-3xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold">Silakan Klik Link di Bawah ini </h2>
+                    <p class="text-yellow-100 text-sm mt-1">Untuk mengambil Akte Cerai pada aplikasi e-ac mahkamahagung</p>
+                </div>
+
+                <div class="p-8">
+                    <div class="mb-6">
+                        <label class="block text-sm font-semibold text-gray-600 mb-2">Saat daftarkan akun e-ac, Pastikan Email dan password sama pada saat pendaftaran E-Court Anda !</label>
+                        <a href="https://eac.mahkamahagung.go.id/" target="_blank" 
+   class="mt-4 inline-flex items-center justify-center px-6 py-3 bg-yellow-600 text-white rounded-xl font-bold hover:bg-yellow-700 transition shadow-lg shadow-yellow-100">
+    Buka Aplikasi e-ac mahkamahagung
+</a>
+                    </div>
+                    <div id="hasilTracking" class="mt-8 hidden"></div>
+                </div>
+            </div>
+            
+            <a href="index.html" class="block text-center mt-6 text-gray-500 hover:text-yellow-600 font-semibold">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali ke Beranda
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const dataProduk = [
+            { no: "123/Pdt.G/2024/PA.Binjai", status: "siap", produk: "Akta Cerai & Putusan" },
+            { no: "456/Pdt.G/2024/PA.Binjai", status: "proses", produk: "Putusan" }
+        ];
+
+        function cekStatus() {
+            const inputNo = document.getElementById('nomorPerkara').value.trim();
+            const hasilDiv = document.getElementById('hasilTracking');
+            const icon = document.getElementById('iconCek');
+
+            icon.classList.add('fa-spin');
+            hasilDiv.classList.add('hidden');
+
+            setTimeout(() => {
+                icon.classList.remove('fa-spin');
+                const temukan = dataProduk.find(item => item.no.toLowerCase() === inputNo.toLowerCase());
+
+                if (temukan) {
+                    const isSiap = temukan.status === 'siap';
+                    hasilDiv.className = `mt-8 p-6 rounded-2xl border-2 ${isSiap ? 'bg-green-50 border-green-200' : 'bg-blue-50 border-blue-200'}`;
+                    
+                    const pesanWA = `Halo Admin PTSP, saya ingin konfirmasi nomor perkara ${temukan.no}`;
+                    const linkWA = `https://wa.me/6281234567890?text=${encodeURIComponent(pesanWA)}`;
+
+                    hasilDiv.innerHTML = `
+                        <div class="flex items-center mb-4">
+                            <i class="fas ${isSiap ? 'fa-check-circle text-green-500' : 'fa-clock text-blue-500'} text-3xl mr-3"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">${isSiap ? 'SIAP DIAMBIL' : 'MASIH PROSES'}</h4>
+                                <p class="text-xs text-gray-500">${temukan.produk}</p>
+                            </div>
+                        </div>
+                        <a href="${linkWA}" target="_blank" class="flex items-center justify-center w-full py-3 bg-green-600 text-white rounded-xl font-bold shadow-md">
+                            <i class="fab fa-whatsapp mr-2 text-xl"></i> Konfirmasi via WhatsApp
+                        </a>
+                    `;
+                } else {
+                    hasilDiv.className = "mt-8 p-6 bg-red-50 border-2 border-red-200 rounded-2xl";
+                    hasilDiv.innerHTML = `<h4 class="font-bold text-red-800">⚠️ Data Tidak Ditemukan</h4><p class="text-sm text-red-700">Periksa kembali nomor perkara Anda.</p>`;
+                }
+                hasilDiv.classList.remove('hidden');
+            }, 800);
+        }
+    </script>
+</body>
+</html>  
