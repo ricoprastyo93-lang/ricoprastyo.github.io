@@ -98,7 +98,7 @@
         <section class="mt-20 bg-white rounded-3xl p-10 shadow-inner flex flex-col md:flex-row items-center justify-between">
             <div>
                 <h2 class="text-2xl font-bold text-gray-800">Ada Pertanyaan?</h2>
-                <p class="text-gray-600 mt-2">Hubungi petugas kami melalui WhatsApp atau layanan Live Chat.</p>
+                <p class="text-gray-600 mt-2">Hubungi petugas kami melalui WhatsApp Center atau layanan Live Chat.</p>
             </div>
             <div class="flex flex-wrap gap-4">
     <a href="https://api.whatsapp.com/send/?phone=6281269908262&text=Halo+Pengadilan+Agama+Binjai&type=phone_number&app_absent=0" 
@@ -132,8 +132,7 @@
         </div>
         <!-- TAMBAHKAN ID DISINI (Penting!) -->
     <div class="chat-box" id="chatBox" style="height: 250px; overflow-y: auto; padding: 10px;">
-        <div class="bot-msg">Halo! Selamat datang di PTSP Online PA Binjai. Ada yang bisa kami bantu?</div>
-		<div class="bot-msg">Semua Pertanyaan Anda akan dijawab Otomatis oleh Sistem, apabila kurang jelas bisa hubungi di Whatsapp Center</div>
+        <div class="bot-msg">Halo! Selamat datang di PTSP Online PA Binjai. Ada yang bisa kami bantu?. Semua Pertanyaan Anda akan dijawab Otomatis oleh Sistem, apabila kurang jelas bisa hubungi di Whatsapp Center</div>
     </div>
     <!-- Pastikan onclick sudah botResponse -->
     <div class="quick-replies" id="quickReplies">
@@ -141,6 +140,7 @@
         <button onclick="botResponse('Pengambilan Akta Cerai')">Pengambilan Akta Cerai</button>
         <button onclick="botResponse('Biaya Perkara')">Biaya Perkara</button>
 		<button onclick="botResponse('Apabila Buku Nikah Hilang')">Apabila Buku Nikah Hilang</button>
+		<button onclick="botResponse('Tergugat Tidak Diketahui Keberadaannya')">Tergugat Tidak Diketahui Keberadaannya</button>
     </div>
     
     <div class="chat-input">
@@ -154,7 +154,8 @@ const faqData = {
     "Dokumen Persyaratan Perceraian": "Syarat utama: KTP asli (wajib domisili binjai), Buku Nikah asli, dan surat gugatan/permohonan. Untuk PNS/PPPK perlu surat izin atasan.",
     "Pengambilan Akta Cerai": "Anda bisa mengecek Akta Cerai melalui menu 'Pengambilan Produk' di halaman utama aplikasi ini.",
     "Biaya Perkara": "Biaya perkara dihitung berdasarkan radius lokasi tempat tinggal. Untuk estimasi tepat, silakan hubungi Kasir kami melalui Whatsapp Center.",
-	"Apabila buku nikah hilang": "Anda bisa mengurus buku nikah pengganti di KUA tempat pernikahan anda tercatat. Persyaratannya meliputi surat keterangan kehilangan dari kepolisian, fotokopi KTP/KK, dan pas foto 2x3 latar biru. Proses ini cepat, dapat selesai di hari yang sama, dan data diambil dari database KUA tempat pertama menikah."
+    "Apabila Buku Nikah Hilang": "Anda bisa mengurus buku nikah pengganti di KUA tempat pernikahan anda tercatat. Persyaratannya meliputi surat keterangan kehilangan dari kepolisian, fotokopi KTP/KK, dan pas foto 2x3 latar biru.", // TAMBAHKAN KOMA DI SINI
+    "Tergugat Tidak Diketahui Keberadaannya": "Untuk perkara gaib (Tergugat tidak diketahui alamatnya), proses pemanggilan dilakukan melalui media massa/pengumuman resmi. Persiapkan dokumen identitas dan bukti pernikahan."
 };
 
 	function botResponse(keyword) {
@@ -313,7 +314,7 @@ userInput.onkeypress = (e) => { if(e.key === 'Enter') sendMessage() };
           </a>
 
           <!-- Tombol Video 3 -->
-          <a href="https://www.youtube.com/watch?v=NQPEmJZ5XzQ&t=18s" target="_blank" class="btn btn-white text-start shadow-sm p-3 border-start border-success border-4 hover-shadow" style="background: white; transition: 0.3s;">
+          <a href="https://www.youtube.com/watch?v=NQPEmJZ5XzQ&t=16s" target="_blank" class="btn btn-white text-start shadow-sm p-3 border-start border-success border-4 hover-shadow" style="background: white; transition: 0.3s;">
             <div class="d-flex align-items-center">
                 <i class="fab fa-youtube text-danger fs-4 me-3"></i>
                 <div>
