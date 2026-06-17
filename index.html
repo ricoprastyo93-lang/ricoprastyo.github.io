@@ -20,6 +20,15 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
             background-color: #f8f9fa !important;
         }
+        /* Memaksa link navigasi mengikuti standard style tanpa gangguan bootstrap */
+        .nav-link-custom {
+            color: #ffffff !important;
+            text-decoration: none !important;
+            transition: color 0.2s ease;
+        }
+        .nav-link-custom:hover {
+            color: #86efac !important; /* Warna hijau muda (green-300) */
+        }
     </style>
 </head>
 <body class="bg-green-50 font-sans">
@@ -34,12 +43,12 @@
                 <span class="font-bold text-xl tracking-wider">PENGADILAN AGAMA BINJAI</span>
             </div>
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="#" class="hover:text-green-300 text-white" style="text-decoration: none;">Beranda</a>
-                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalPanduan" class="hover:text-green-300 text-white" style="text-decoration: none;">Panduan</a>
+                <a href="#" class="nav-link-custom">Beranda</a>
+                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalPanduan" class="nav-link-custom">Panduan</a>
                 
-                <!-- Tombol Survei SKM yang Lebih Kontras dan Terang -->
-                <a href="http://localhost/ptsp-survei/survei.html" target="_blank" class="bg-amber-500 hover:bg-amber-400 px-4 py-2 rounded-lg font-extrabold transition-all flex items-center gap-2 shadow-lg" style="color: #0f172a !important; text-decoration: none !important;">
-                    📊 Survei Kepuasan
+                <!-- Menu Survei Kepuasan yang Sudah Serasi -->
+                <a href="http://localhost/ptsp-survei/survei.html" target="_blank" class="nav-link-custom">
+                    Survei Kepuasan
                 </a>
             </div>
         </div>
